@@ -1,19 +1,15 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import Login from "../pages/login/Login";
+import Post from "../pages/post/Post";
 
 const Router = () => {
   const auth = true;
   return (
-    <div className="App">
-      <h1>Welcome to React Router!</h1>
-      <Routes>
-        <Route path="/" element={<div>home</div>} />
-        <Route
-          path="post"
-          element={auth ? <div>post</div> : <Navigate to="/" />}
-        />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="post" element={auth ? <Post /> : <Navigate to="/" />} />
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
   );
 };
 export default Router;
