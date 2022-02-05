@@ -10,6 +10,7 @@ const enterWithEmail = (user, password, approved, onError) => {
   createUserWithEmailAndPassword(mainCredentials, user, password)
     .then((userCredential) => approved && approved(userCredential))
     .catch((error) => {
+      console.log(error);
       if (error.code === "auth/email-already-in-use") {
         signInWithEmailAndPassword(mainCredentials, user, password)
           .then((userCredential) => approved && approved(userCredential))

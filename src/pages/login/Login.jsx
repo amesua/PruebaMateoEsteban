@@ -4,14 +4,18 @@ import Button from "@mui/material/Button";
 import useStyles from "./login.styles";
 import enterWithEmail from "../../firebase/means/email";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const history = useNavigate();
   const clases = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const submit = () => {
-    enterWithEmail(email, password, () => {});
+    enterWithEmail(email, password, () => {
+      history("post");
+    });
   };
 
   return (
