@@ -5,6 +5,8 @@ import useStyles from "./login.styles";
 import enterWithEmail from "../../firebase/means/email";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import googleEnter from "../../firebase/means/enterWithGoogle";
+import facebookEnter from "../../firebase/means/enterWithFacebook";
 
 const Login = () => {
   const history = useNavigate();
@@ -16,6 +18,12 @@ const Login = () => {
     enterWithEmail(email, password, () => {
       history("post");
     });
+  };
+  const googleSubmit = () => {
+    googleEnter();
+  };
+  const facebookSubmit = () => {
+    facebookEnter();
   };
 
   return (
@@ -51,10 +59,20 @@ const Login = () => {
           >
             LOGIN
           </Button>
-          <Button className={clases.button} variant="contained" size="medium">
+          <Button
+            className={clases.button}
+            variant="contained"
+            size="medium"
+            onClick={facebookEnter}
+          >
             FACEBOOK
           </Button>
-          <Button className={clases.button} variant="contained" size="medium">
+          <Button
+            className={clases.button}
+            variant="contained"
+            size="medium"
+            onClick={googleSubmit}
+          >
             GOOGLE
           </Button>
         </div>
