@@ -1,10 +1,13 @@
 import axios from "axios";
 
-export const putService = (serviceName, params) => {
+export const putService = async (serviceName, params) => {
   try {
-    const response = axios.put("https://waco-api.herokuapp.com" + serviceName, {
-      ...params,
-    });
+    const response = await axios.put(
+      "https://waco-api.herokuapp.com" + serviceName,
+      {
+        ...params,
+      }
+    );
     return response;
   } catch (error) {
     throw error;

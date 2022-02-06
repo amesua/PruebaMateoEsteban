@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const postService = (serviceName, params) => {
+export const postService = async (serviceName, params) => {
   try {
-    const response = axios.post(
+    const response = await axios.post(
       "https://waco-api.herokuapp.com" + serviceName,
       {
         ...params,

@@ -6,11 +6,10 @@ import enterWithEmail from "../../firebase/means/email";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import googleEnter from "../../firebase/means/enterWithGoogle";
-import facebookEnter from "../../firebase/means/enterWithFacebook";
 
 const Login = () => {
   const history = useNavigate();
-  const clases = useStyles();
+  const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,63 +19,54 @@ const Login = () => {
     });
   };
   const googleSubmit = () => {
-    googleEnter();
-  };
-  const facebookSubmit = () => {
-    facebookEnter();
+    googleEnter(() => {
+      history("post");
+    });
   };
 
   return (
-    <div className={clases.root}>
-      <Stack spacing={3} direction="column">
-        <Stack spacing={3} direction="row">
-          <TextField
-            id="outlined-required"
-            label="User"
-            variant="outlined"
-            value={email}
-            onChange={(event) => {
-              setEmail(event.target.value);
-            }}
-          />
-          <TextField
-            id="outlined-password-input"
-            label="Password"
-            type="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
-          />
-        </Stack>
-        <div className={clases.buttonBox}>
-          <Button
-            className={clases.button}
-            variant="contained"
-            size="medium"
-            onClick={submit}
-          >
-            LOGIN
-          </Button>
-          <Button
-            className={clases.button}
-            variant="contained"
-            size="medium"
-            onClick={facebookEnter}
-          >
-            FACEBOOK
-          </Button>
-          <Button
-            className={clases.button}
-            variant="contained"
-            size="medium"
-            onClick={googleSubmit}
-          >
-            GOOGLE
-          </Button>
-        </div>
+    <div className={classes.root}>
+      <Stack spacing={3} direction="row">
+        <TextField
+          id="outlined-required"
+          label="User"
+          variant="outlined"
+          className={classes.colorTextField}
+          value={email}
+          onChange={(event) => {
+            setEmail(event.target.value);
+          }}
+        />
+        <TextField
+          id="outlined-password-input"
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+          className={classes.colorTextField}
+          value={password}
+          onChange={(event) => {
+            setPassword(event.target.value);
+          }}
+        />
       </Stack>
+      <div style={{ height: "15px" }} />
+      <Button
+        className={classes.button}
+        variant="contained"
+        size="medium"
+        onClick={submit}
+      >
+        LOGIN
+      </Button>
+      <div style={{ height: "15px" }} />
+      <Button
+        className={classes.button}
+        variant="contained"
+        size="medium"
+        onClick={googleSubmit}
+      >
+        GOOGLE
+      </Button>
     </div>
   );
 };

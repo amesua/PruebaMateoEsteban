@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const deleteService = (serviceName, headersParams) => {
+export const deleteService = async (serviceName, headersParams) => {
   try {
-    const response = axios.delete(
+    const response = await axios.delete(
       "https://waco-api.herokuapp.com" + serviceName,
       {
         headersParams,

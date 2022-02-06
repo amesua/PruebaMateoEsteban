@@ -6,7 +6,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#8FBEFF",
+    backgroundColor: "#D7DBDD",
   },
 
   button: {
@@ -31,6 +31,18 @@ const useStyles = makeStyles({
 
   space: {
     height: "15px",
+  },
+  tableStyles: {
+    width: "80%",
+    height: "300px",
+    overflow: "auto",
+    display: "flex",
+  },
+  tableCell: {
+    width: "5px",
+  },
+  colorTextField: {
+    backgroundColor: "#FDFEFE ",
   },
 });
 
